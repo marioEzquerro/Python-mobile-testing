@@ -1,6 +1,11 @@
 from behave import *
 
 
+@given(u'the user is in login page')
+def the_user_is_in_login_page(context):
+    context.app.login_page.verify_login_page_is_opened()
+
+
 @given(u'user enters name "{name}"')
 def user_enters_name(context, name):
     context.app.login_page.enter_username(name)

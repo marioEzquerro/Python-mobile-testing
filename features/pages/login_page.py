@@ -9,10 +9,6 @@ class LoginPage(Page):
     _PASSWORD_INPUT = (By.ID, 'tiet_sign_in_password')
     _LOGIN_BUTTON = (By.ID, 'btn_sign_in_button')
 
-    def verify_login_page_is_opened(context):
-        element = context.isDisplayed(context._USER_NAME_INPUT)
-        assert element == True
-
     def enter_username(context, text):
         context.enter_text(context._USER_NAME_INPUT, text)
 
