@@ -6,14 +6,10 @@ def the_user_is_in_login_page(context):
     context.app.login_page.verify_login_page_is_opened()
 
 
-@given(u'user enters name "{name}"')
-def user_enters_name(context, name):
+@given(u'user enters name "{name}" and password "{password}"')
+def user_enters_name(context, name, password):
     context.app.login_page.enter_username(name)
-
-
-@given(u'user enters password "{text}"')
-def user_enters_password(context, text):
-    context.app.login_page.enter_password(text)
+    context.app.login_page.enter_password(password)
 
 
 @when(u'user click iniciar sesion')
@@ -23,4 +19,4 @@ def click_login_button(context):
 
 @then(u'user is logged in')
 def user_is_in(context):
-    context.app.verifyMainPage()
+    context.app.main_page.verify_main_page_is_open()

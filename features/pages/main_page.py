@@ -7,4 +7,4 @@ class MainPage(Page):
     LINER_BAR = (By.CLASS_NAME, "android.widget.FrameLayout")
 
     def verify_main_page_is_open(self):
-        pass
+        assert False
