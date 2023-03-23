@@ -1,9 +1,11 @@
-Feature: Bodegas torres
+Feature: User logs in the app
 
-    Scenario Outline: Log in using correct credentials
-        Given user enters name "<USERNAME>" and password "<PASSWORD>"
-        When user click iniciar sesion
-        Then user is logged in
+    Scenario Outline: Login with valid credentials
+        Given User is in the app
+        When User enters username "<NAME>" and password "<PASSWORD>" and cliks login button
+        Then User is in main page
         Examples:
-            | USERNAME              | PASSWORD |
-            | mezquerro@hiberus.com | 12345    |
+            | NAME                    | PASSWORD     |
+            | toulouselunde@gmail.com | Toulouse2021 |
+
+

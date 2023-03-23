@@ -1,22 +1,18 @@
-from behave import *
+from behave import given, when, then
 
 
-@given(u'the user is in login page')
-def the_user_is_in_login_page(context):
-    context.app.login_page.verify_login_page_is_opened()
+@given(u'User is in the app')
+def user_is_in_the_app(self):
+    assert self.app.login_page.user_in_login_page(), 'User in login'
 
 
-@given(u'user enters name "{name}" and password "{password}"')
-def user_enters_name(context, name, password):
-    context.app.login_page.enter_username(name)
-    context.app.login_page.enter_password(password)
+@when(u'User enters username "{name}" and password "{password}" and cliks login button')
+def step_def(self, name, password):
+    self.app.login_page.enter_username(name)
+    self.app.login_page.enter_password(password)
+    self.app.login_page.click_login()
 
 
-@when(u'user click iniciar sesion')
-def click_login_button(context):
-    context.app.login_page.click_login_button()
-
-
-@then(u'user is logged in')
-def user_is_in(context):
-    context.app.main_page.verify_main_page_is_open()
+@then(u'User is in main page')
+def step_def(self):
+    assert self.app.onboarding_page.user_in_onboarding_page(), 'Not logged in'

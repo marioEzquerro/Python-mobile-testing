@@ -1,24 +1,21 @@
-from features.pages.base_page import Page
+from features.pages.base_page import BasePage
 from selenium.webdriver.common.by import By
 
 
-class LoginPage(Page):
+class LoginPage(BasePage):
 
-    # Locator values in Login page
-    _USER_NAME_INPUT = (By.ID, 'tiet_sign_in_username')
+    _USERNAME_INPUT = (By.ID, 'tiet_sign_in_username')
     _PASSWORD_INPUT = (By.ID, 'tiet_sign_in_password')
-    _LOGIN_BUTTON = (By.ID, 'btn_sign_in_button')
+    _SUBMIT_BUTTON = (By.ID, 'btn_sign_in_button')
 
-    def enter_username(context, text):
-        context.enter_text(context._USER_NAME_INPUT, text)
+    def user_in_login_page(self):
+       return self.element_is_visible(self._USERNAME_INPUT)
 
-    def enter_password(context, text):
-        context.enter_text(context._PASSWORD_INPUT, text)
+    def enter_username(self, text):
+        self.enter_text(self._USERNAME_INPUT, text)
 
-    def click_login_button(context):
-        context.click_on_element(context._LOGIN_BUTTON)
+    def enter_password(self, passw):
+        self.enter_text(self._PASSWORD_INPUT, passw)
 
-    def navigateBack(context):
-        print(' entered navigate back')
-        context.driver.implicitly_wait(20)
-        context.driver.back()
+    def click_login(self):
+        self.click_element(self._SUBMIT_BUTTON)
